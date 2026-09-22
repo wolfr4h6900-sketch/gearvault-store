@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GEARVAULT | Car Posters</title>
+
+<title>GEARVAULT | Premium Car Posters</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -14,26 +16,29 @@
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#0b0b0b;
+    background:#080808;
     color:#fff;
 }
+
+/* HEADER */
 
 header{
     position:sticky;
     top:0;
-    z-index:100;
-    background:#111;
+    z-index:1000;
+    background:rgba(12,12,12,.96);
+    backdrop-filter:blur(10px);
     border-bottom:1px solid #292929;
-    padding:18px 6%;
+    padding:17px 6%;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .logo{
-    font-size:25px;
+    font-size:26px;
     font-weight:900;
-    letter-spacing:3px;
+    letter-spacing:4px;
 }
 
 nav button{
@@ -41,39 +46,46 @@ nav button{
     border:0;
     color:#fff;
     cursor:pointer;
-    font-size:16px;
-    margin-left:20px;
+    font-size:15px;
+    margin-left:15px;
 }
 
 .cart-btn{
-    background:#fff;
-    color:#000;
+    background:#fff !important;
+    color:#000 !important;
     padding:10px 17px;
     border-radius:7px;
     font-weight:bold;
 }
 
+/* HERO */
+
 .hero{
-    min-height:75vh;
+    min-height:78vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:50px 20px;
+    padding:60px 20px;
+
     background:
-    radial-gradient(circle at center,#303030 0,#111 35%,#070707 75%);
+    radial-gradient(circle at center,#383838 0,#151515 30%,#050505 75%);
+}
+
+.hero-content{
+    max-width:900px;
 }
 
 .hero h1{
-    font-size:clamp(45px,8vw,90px);
-    letter-spacing:8px;
+    font-size:clamp(48px,9vw,100px);
+    letter-spacing:9px;
     font-weight:900;
 }
 
 .hero p{
     color:#aaa;
-    font-size:18px;
-    margin:18px 0 30px;
+    font-size:19px;
+    margin:20px 0 32px;
 }
 
 .shop-btn{
@@ -81,98 +93,96 @@ nav button{
     background:#fff;
     color:#000;
     text-decoration:none;
-    padding:15px 30px;
+    padding:15px 32px;
     border-radius:7px;
-    font-weight:800;
+    font-weight:900;
+    transition:.2s;
 }
 
+.shop-btn:hover{
+    transform:scale(1.05);
+}
+
+/* SECTIONS */
+
 .section{
-    padding:70px 6%;
+    padding:75px 6%;
 }
 
 .section h2{
     text-align:center;
-    font-size:35px;
-    margin-bottom:40px;
+    font-size:36px;
+    margin-bottom:45px;
+    letter-spacing:2px;
 }
+
+/* PRODUCTS */
 
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:28px;
 }
 
 .product{
-    background:#151515;
+    background:#141414;
     border:1px solid #292929;
-    border-radius:12px;
+    border-radius:14px;
     overflow:hidden;
     transition:.25s;
 }
 
 .product:hover{
-    transform:translateY(-5px);
+    transform:translateY(-7px);
     border-color:#666;
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
 }
 
 .product-image{
-    cursor:pointer;
-    position:relative;
-}
-
-.product-image img{
     width:100%;
-    height:270px;
+    height:300px;
     object-fit:cover;
-    display:block;
+    cursor:pointer;
     background:#222;
-}
-
-.view-text{
-    position:absolute;
-    bottom:12px;
-    left:50%;
-    transform:translateX(-50%);
-    background:rgba(0,0,0,.75);
-    padding:8px 14px;
-    border-radius:20px;
-    font-size:13px;
-    opacity:0;
-    transition:.2s;
-}
-
-.product-image:hover .view-text{
-    opacity:1;
+    display:block;
 }
 
 .product-info{
-    padding:18px;
+    padding:19px;
 }
 
 .product h3{
-    font-size:19px;
+    font-size:20px;
     margin-bottom:8px;
 }
 
 .price{
     color:#bbb;
-    margin-bottom:15px;
+    font-size:17px;
+    margin-bottom:16px;
 }
 
 .add{
     width:100%;
-    padding:12px;
+    padding:13px;
     border:0;
-    border-radius:6px;
+    border-radius:7px;
     cursor:pointer;
-    font-weight:bold;
+    font-weight:900;
     background:#fff;
     color:#000;
+    transition:.2s;
 }
+
+.add:hover{
+    background:#ddd;
+}
+
+/* CART */
 
 #cart{
     display:none;
-    min-height:80vh;
+    min-height:75vh;
 }
 
 .cart-item{
@@ -180,28 +190,39 @@ nav button{
     justify-content:space-between;
     align-items:center;
     gap:15px;
-    padding:18px 0;
+    padding:20px 0;
     border-bottom:1px solid #292929;
 }
 
+.cart-name{
+    font-weight:bold;
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
 .qty button{
-    padding:6px 10px;
-    margin:0 4px;
+    padding:7px 12px;
+    border:0;
     cursor:pointer;
+    border-radius:5px;
 }
 
 .remove{
     background:#333;
     color:#fff;
     border:0;
-    padding:8px 12px;
+    padding:9px 13px;
     cursor:pointer;
     border-radius:5px;
 }
 
 .total{
     text-align:right;
-    font-size:25px;
+    font-size:26px;
     font-weight:bold;
     margin-top:30px;
 }
@@ -224,21 +245,17 @@ nav button{
     display:none;
     position:fixed;
     inset:0;
-    z-index:999;
-    background:rgba(0,0,0,.95);
+    z-index:5000;
+    background:rgba(0,0,0,.94);
     align-items:center;
     justify-content:center;
-    padding:30px;
+    padding:20px;
 }
 
-.gallery.active{
-    display:flex;
-}
-
-.gallery-content{
+.gallery-box{
     width:min(900px,95vw);
-    text-align:center;
     position:relative;
+    text-align:center;
 }
 
 .gallery-image{
@@ -246,6 +263,8 @@ nav button{
     max-height:75vh;
     object-fit:contain;
     border-radius:10px;
+    display:block;
+    margin:auto;
 }
 
 .close-gallery{
@@ -255,10 +274,11 @@ nav button{
     background:#fff;
     color:#000;
     border:0;
-    width:40px;
-    height:40px;
+    width:38px;
+    height:38px;
     border-radius:50%;
-    font-size:25px;
+    font-size:22px;
+    font-weight:bold;
     cursor:pointer;
 }
 
@@ -266,28 +286,28 @@ nav button{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:50px;
-    height:50px;
-    border-radius:50%;
+    width:48px;
+    height:48px;
     border:0;
+    border-radius:50%;
     background:#fff;
     color:#000;
-    font-size:30px;
-    cursor:pointer;
+    font-size:28px;
     font-weight:bold;
+    cursor:pointer;
 }
 
-.prev{
-    left:-70px;
+.gallery-left{
+    left:10px;
 }
 
-.next{
-    right:-70px;
+.gallery-right{
+    right:10px;
 }
 
 .gallery-title{
     margin-top:15px;
-    font-size:20px;
+    font-size:18px;
     font-weight:bold;
 }
 
@@ -296,14 +316,18 @@ nav button{
     margin-top:7px;
 }
 
+/* FOOTER */
+
 footer{
-    padding:30px;
+    padding:35px;
     text-align:center;
     color:#777;
     border-top:1px solid #222;
 }
 
-@media(max-width:700px){
+/* MOBILE */
+
+@media(max-width:600px){
 
     header{
         padding:15px 4%;
@@ -311,54 +335,61 @@ footer{
 
     .logo{
         font-size:20px;
+        letter-spacing:2px;
     }
 
     nav button{
-        font-size:14px;
-        margin-left:8px;
+        font-size:13px;
+        margin-left:6px;
     }
 
     .hero{
         min-height:65vh;
     }
 
-    .gallery{
-        padding:15px;
+    .hero h1{
+        letter-spacing:5px;
     }
 
-    .gallery-image{
-        max-height:65vh;
+    .section{
+        padding:55px 5%;
     }
 
-    .prev{
-        left:5px;
+    .product-image{
+        height:280px;
     }
 
-    .next{
-        right:5px;
+    .cart-item{
+        flex-wrap:wrap;
     }
 
     .gallery-arrow{
-        width:42px;
-        height:42px;
-        font-size:23px;
+        width:40px;
+        height:40px;
+        font-size:22px;
     }
 
-    .close-gallery{
-        top:-50px;
-        right:5px;
-    }
 }
+
 </style>
 </head>
 
 <body>
 
+
+<!-- HEADER -->
+
 <header>
 
-    <div class="logo">GEARVAULT</div>
+    <div class="logo">
+        GEARVAULT
+    </div>
 
     <nav>
+
+        <button onclick="showHome()">
+            HOME
+        </button>
 
         <button onclick="showShop()">
             SHOP
@@ -375,22 +406,25 @@ footer{
 
 <main>
 
+
+<!-- HOME -->
+
 <section class="hero" id="home">
 
-    <div>
+    <div class="hero-content">
 
         <h1>GEARVAULT</h1>
 
         <p>
-            Premium Automotive Posters
+            PREMIUM AUTOMOTIVE POSTERS
         </p>
 
-        <a href="#shop"
-           class="shop-btn"
-           onclick="showShop()">
-
+        <a
+            href="#shop"
+            class="shop-btn"
+            onclick="showShop()"
+        >
             SHOP NOW
-
         </a>
 
     </div>
@@ -398,41 +432,43 @@ footer{
 </section>
 
 
+<!-- SHOP -->
+
 <section class="section" id="shop">
 
-    <h2>CAR POSTERS</h2>
+    <h2>
+        CAR POSTERS
+    </h2>
+
 
     <div class="products">
 
 
-        <!-- BMW M4 -->
+        <!-- BMW -->
 
         <div class="product">
 
-            <div class="product-image"
-                 onclick="openGallery('BMW M4')">
-
-                <img src="https://github.com/wolfr4h6900-sketch/gearvault-store/blob/main/Screenshot%202026-09-22%20225127.png?raw=true">
-
-                <div class="view-text">
-                    VIEW PHOTOS
-                </div>
-
-            </div>
+            <img
+                class="product-image"
+                src="https://github.com/wolfr4h6900-sketch/gearvault-store/blob/main/Screenshot%202026-09-22%20225127.png?raw=true"
+                onclick="openGallery('BMW M4')"
+            >
 
             <div class="product-info">
 
-                <h3>BMW M4</h3>
+                <h3>
+                    BMW M4
+                </h3>
 
                 <div class="price">
                     ₹300
                 </div>
 
-                <button class="add"
-                        onclick="addToCart('BMW M4',300)">
-
+                <button
+                    class="add"
+                    onclick="addToCart('BMW M4',300)"
+                >
                     ADD TO CART
-
                 </button>
 
             </div>
@@ -444,30 +480,27 @@ footer{
 
         <div class="product">
 
-            <div class="product-image"
-                 onclick="openGallery('Supercar Edition')">
-
-                <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=700&q=80">
-
-                <div class="view-text">
-                    VIEW PHOTOS
-                </div>
-
-            </div>
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=90"
+                onclick="openGallery('Supercar Edition')"
+            >
 
             <div class="product-info">
 
-                <h3>Supercar Edition</h3>
+                <h3>
+                    Supercar Edition
+                </h3>
 
                 <div class="price">
                     ₹300
                 </div>
 
-                <button class="add"
-                        onclick="addToCart('Supercar Edition',300)">
-
+                <button
+                    class="add"
+                    onclick="addToCart('Supercar Edition',300)"
+                >
                     ADD TO CART
-
                 </button>
 
             </div>
@@ -479,30 +512,27 @@ footer{
 
         <div class="product">
 
-            <div class="product-image"
-                 onclick="openGallery('JDM Collection')">
-
-                <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=700&q=80">
-
-                <div class="view-text">
-                    VIEW PHOTOS
-                </div>
-
-            </div>
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=900&q=90"
+                onclick="openGallery('JDM Collection')"
+            >
 
             <div class="product-info">
 
-                <h3>JDM Collection</h3>
+                <h3>
+                    JDM Collection
+                </h3>
 
                 <div class="price">
                     ₹350
                 </div>
 
-                <button class="add"
-                        onclick="addToCart('JDM Collection',350)">
-
+                <button
+                    class="add"
+                    onclick="addToCart('JDM Collection',350)"
+                >
                     ADD TO CART
-
                 </button>
 
             </div>
@@ -514,40 +544,40 @@ footer{
 
         <div class="product">
 
-            <div class="product-image"
-                 onclick="openGallery('Mercedes Edition')">
-
-                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80">
-
-                <div class="view-text">
-                    VIEW PHOTOS
-                </div>
-
-            </div>
+            <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=90"
+                onclick="openGallery('Mercedes Edition')"
+            >
 
             <div class="product-info">
 
-                <h3>Mercedes Edition</h3>
+                <h3>
+                    Mercedes Edition
+                </h3>
 
                 <div class="price">
                     ₹400
                 </div>
 
-                <button class="add"
-                        onclick="addToCart('Mercedes Edition',400)">
-
+                <button
+                    class="add"
+                    onclick="addToCart('Mercedes Edition',400)"
+                >
                     ADD TO CART
-
                 </button>
 
             </div>
 
         </div>
 
+
     </div>
 
 </section>
 
+
+<!-- CART -->
 
 <section class="section" id="cart">
 
@@ -558,61 +588,71 @@ footer{
     <div id="cartItems"></div>
 
     <div class="total">
+
         Total: ₹<span id="cartTotal">0</span>
+
     </div>
 
-    <a id="whatsappOrder"
-       class="whatsapp"
-       href="#"
-       target="_blank">
-
-       ORDER ON WHATSAPP
-
+    <a
+        id="whatsappOrder"
+        class="whatsapp"
+        href="#"
+        target="_blank"
+    >
+        ORDER ON WHATSAPP
     </a>
 
 </section>
+
 
 </main>
 
 
 <!-- IMAGE GALLERY -->
 
-<div class="gallery" id="gallery">
+<div
+    class="gallery"
+    id="gallery"
+    onclick="closeGalleryOutside(event)"
+>
 
-    <div class="gallery-content">
+    <div class="gallery-box">
 
-        <button class="close-gallery"
-                onclick="closeGallery()">
-
+        <button
+            class="close-gallery"
+            onclick="closeGallery()"
+        >
             ×
-
         </button>
 
-        <button class="gallery-arrow prev"
-                onclick="previousImage()">
-
+        <button
+            class="gallery-arrow gallery-left"
+            onclick="previousImage()"
+        >
             ‹
-
         </button>
 
-        <img id="galleryImage"
-             class="gallery-image"
-             src="">
+        <img
+            id="galleryImage"
+            class="gallery-image"
+        >
 
-        <button class="gallery-arrow next"
-                onclick="nextImage()">
-
+        <button
+            class="gallery-arrow gallery-right"
+            onclick="nextImage()"
+        >
             ›
-
         </button>
 
-        <div id="galleryTitle"
-             class="gallery-title">
-        </div>
+        <div
+            id="galleryTitle"
+            class="gallery-title"
+        ></div>
 
-        <div id="galleryCounter"
-             class="gallery-counter">
-        </div>
+        <div
+            id="galleryCounter"
+            class="gallery-counter"
+        ></div>
 
     </div>
 
@@ -627,6 +667,7 @@ footer{
 
 
 <script>
+
 
 /* =========================
    CART
@@ -649,7 +690,8 @@ function saveCart(){
 function addToCart(name,price){
 
     let existing =
-    cart.find(item => item.name === name);
+        cart.find(item => item.name === name);
+
 
     if(existing){
 
@@ -658,12 +700,15 @@ function addToCart(name,price){
     }else{
 
         cart.push({
+
             name:name,
             price:price,
             qty:1
+
         });
 
     }
+
 
     saveCart();
 
@@ -677,28 +722,44 @@ function addToCart(name,price){
 function updateCartCount(){
 
     let count =
-    cart.reduce(
-        (total,item)=>total+item.qty,
-        0
-    );
+        cart.reduce(
+            (total,item) =>
+            total + item.qty,
+            0
+        );
+
 
     document.getElementById(
         "cartCount"
-    ).innerText=count;
+    ).innerText = count;
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showHome(){
+
+    document.getElementById("shop").style.display="block";
+
+    document.getElementById("cart").style.display="none";
+
+    document.getElementById("home").scrollIntoView({
+        behavior:"smooth"
+    });
 
 }
 
 
 function showShop(){
 
-    document.getElementById("shop")
-    .style.display="block";
+    document.getElementById("shop").style.display="block";
 
-    document.getElementById("cart")
-    .style.display="none";
+    document.getElementById("cart").style.display="none";
 
-    document.getElementById("shop")
-    .scrollIntoView({
+    document.getElementById("shop").scrollIntoView({
         behavior:"smooth"
     });
 
@@ -707,41 +768,47 @@ function showShop(){
 
 function showCart(){
 
-    document.getElementById("shop")
-    .style.display="none";
+    document.getElementById("shop").style.display="none";
 
-    document.getElementById("cart")
-    .style.display="block";
+    document.getElementById("cart").style.display="block";
 
     renderCart();
 
-    document.getElementById("cart")
-    .scrollIntoView({
+    document.getElementById("cart").scrollIntoView({
         behavior:"smooth"
     });
 
 }
 
 
+/* =========================
+   CART DISPLAY
+========================= */
+
 function renderCart(){
 
     let container =
-    document.getElementById("cartItems");
+        document.getElementById("cartItems");
+
 
     container.innerHTML="";
 
+
     let total=0;
+
 
     if(cart.length===0){
 
-        container.innerHTML =
+        container.innerHTML=
         "<p style='text-align:center;color:#888;padding:40px'>Your cart is empty.</p>";
 
     }
 
+
     cart.forEach((item,index)=>{
 
         total += item.price * item.qty;
+
 
         container.innerHTML += `
 
@@ -749,38 +816,43 @@ function renderCart(){
 
             <div>
 
-                <strong>
+                <div class="cart-name">
                     ${item.name}
-                </strong>
+                </div>
 
-                <br>
-
-                ₹${item.price} × ${item.qty}
+                <div style="color:#aaa;margin-top:6px">
+                    ₹${item.price} × ${item.qty}
+                </div>
 
             </div>
+
 
             <div class="qty">
 
                 <button
-                    onclick="changeQty(${index},-1)">
+                    onclick="changeQty(${index},-1)"
+                >
                     −
                 </button>
 
-                ${item.qty}
+                <span>
+                    ${item.qty}
+                </span>
 
                 <button
-                    onclick="changeQty(${index},1)">
+                    onclick="changeQty(${index},1)"
+                >
                     +
                 </button>
 
             </div>
 
+
             <button
                 class="remove"
-                onclick="removeItem(${index})">
-
+                onclick="removeItem(${index})"
+            >
                 REMOVE
-
             </button>
 
         </div>
@@ -789,9 +861,11 @@ function renderCart(){
 
     });
 
+
     document.getElementById(
         "cartTotal"
     ).innerText=total;
+
 
     createWhatsAppLink();
 
@@ -802,11 +876,13 @@ function changeQty(index,amount){
 
     cart[index].qty += amount;
 
+
     if(cart[index].qty <= 0){
 
         cart.splice(index,1);
 
     }
+
 
     saveCart();
 
@@ -830,53 +906,61 @@ function removeItem(index){
 }
 
 
+/* =========================
+   WHATSAPP ORDER
+========================= */
+
 function createWhatsAppLink(){
 
     let message =
-    "Hello GEARVAULT!%0A%0AI want to order:%0A";
+        "Hello GEARVAULT!%0A%0AI want to order:%0A";
+
 
     cart.forEach(item=>{
 
         message +=
-        item.name +
-        " × " +
-        item.qty +
-        " = ₹" +
-        (item.price*item.qty) +
-        "%0A";
+            item.name +
+            " × " +
+            item.qty +
+            " = ₹" +
+            (item.price * item.qty) +
+            "%0A";
 
     });
 
+
     let total =
-    cart.reduce(
-        (sum,item)=>
-        sum+(item.price*item.qty),
-        0
-    );
+        cart.reduce(
+            (sum,item) =>
+            sum + (item.price * item.qty),
+            0
+        );
+
 
     message +=
-    "%0ATotal: ₹"+total;
+        "%0ATotal: ₹" + total;
 
-    let phone="916207273731";
+
+    /* YOUR WHATSAPP NUMBER */
+
+    let phone =
+        "916207273731";
+
 
     document.getElementById(
         "whatsappOrder"
     ).href =
-    "https://wa.me/"+phone+
-    "?text="+message;
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        message;
 
 }
 
 
 /* =========================
-   PRODUCT IMAGE GALLERY
+   PRODUCT IMAGE GALLERIES
 ========================= */
-
-
-/*
-   YAHAN HAR PRODUCT KI MULTIPLE
-   IMAGES SET HOTI HAIN.
-*/
 
 const productImages = {
 
@@ -884,33 +968,38 @@ const productImages = {
 
         "https://github.com/wolfr4h6900-sketch/gearvault-store/blob/main/Screenshot%202026-09-22%20225127.png?raw=true",
 
-        "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80",
+        "https://github.com/wolfr4h6900-sketch/gearvault-store/blob/main/Screenshot%202026-09-22%20224637.png?raw=true",
 
-        "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&w=1000&q=80"
+        "https://github.com/wolfr4h6900-sketch/gearvault-store/blob/main/Screenshot%202026-09-22%20224628.png?raw=true",
+
+        "https://github.com/wolfr4h6900-sketch/gearvault-store/blob/main/Screenshot%202026-09-22%20224655.png?raw=true"
 
     ],
+
 
     "Supercar Edition":[
 
-        "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=90",
 
-        "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80"
+        "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=90"
 
     ],
+
 
     "JDM Collection":[
 
-        "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=90",
 
-        "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=80"
+        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=90"
 
     ],
 
+
     "Mercedes Edition":[
 
-        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=90",
 
-        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80"
+        "https://images.unsplash.com/photo-1618843479165-4c8e0e5b1f5d?auto=format&fit=crop&w=1200&q=90"
 
     ]
 
@@ -930,7 +1019,79 @@ function openGallery(product){
 
     document.getElementById(
         "gallery"
-    ).classList.add("active");
+    ).style.display="flex";
+
+
+    showGalleryImage();
+
+}
+
+
+function showGalleryImage(){
+
+    let images =
+        productImages[currentProduct];
+
+
+    document.getElementById(
+        "galleryImage"
+    ).src =
+        images[currentImage];
+
+
+    document.getElementById(
+        "galleryTitle"
+    ).innerText =
+        currentProduct;
+
+
+    document.getElementById(
+        "galleryCounter"
+    ).innerText =
+        (currentImage + 1) +
+        " / " +
+        images.length;
+
+}
+
+
+function nextImage(){
+
+    let images =
+        productImages[currentProduct];
+
+
+    currentImage++;
+
+
+    if(currentImage >= images.length){
+
+        currentImage = 0;
+
+    }
+
+
+    showGalleryImage();
+
+}
+
+
+function previousImage(){
+
+    let images =
+        productImages[currentProduct];
+
+
+    currentImage--;
+
+
+    if(currentImage < 0){
+
+        currentImage =
+            images.length - 1;
+
+    }
+
 
     showGalleryImage();
 
@@ -941,100 +1102,59 @@ function closeGallery(){
 
     document.getElementById(
         "gallery"
-    ).classList.remove("active");
+    ).style.display="none";
 
 }
 
 
-function showGalleryImage(){
+function closeGalleryOutside(event){
 
-    let images =
-    productImages[currentProduct];
+    if(event.target.id === "gallery"){
 
-    document.getElementById(
-        "galleryImage"
-    ).src =
-    images[currentImage];
-
-    document.getElementById(
-        "galleryTitle"
-    ).innerText =
-    currentProduct;
-
-    document.getElementById(
-        "galleryCounter"
-    ).innerText =
-    (currentImage+1) +
-    " / " +
-    images.length;
-
-}
-
-
-function nextImage(){
-
-    let images =
-    productImages[currentProduct];
-
-    currentImage++;
-
-    if(currentImage >= images.length){
-
-        currentImage=0;
+        closeGallery();
 
     }
 
-    showGalleryImage();
-
 }
 
 
-function previousImage(){
-
-    let images =
-    productImages[currentProduct];
-
-    currentImage--;
-
-    if(currentImage < 0){
-
-        currentImage =
-        images.length-1;
-
-    }
-
-    showGalleryImage();
-
-}
-
-
-/* ESC KEY CLOSE */
+/* KEYBOARD CONTROLS */
 
 document.addEventListener(
     "keydown",
     function(event){
 
-        if(event.key === "Escape"){
+        let gallery =
+            document.getElementById("gallery");
 
-            closeGallery();
 
-        }
+        if(gallery.style.display === "flex"){
 
-        if(event.key === "ArrowRight"){
+            if(event.key === "ArrowRight"){
 
-            nextImage();
+                nextImage();
 
-        }
+            }
 
-        if(event.key === "ArrowLeft"){
+            if(event.key === "ArrowLeft"){
 
-            previousImage();
+                previousImage();
+
+            }
+
+            if(event.key === "Escape"){
+
+                closeGallery();
+
+            }
 
         }
 
     }
 );
 
+
+/* START */
 
 updateCartCount();
 
