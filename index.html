@@ -6,7 +6,11 @@
 <title>GEARVAULT | Car Posters</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
 body{
     font-family:Arial,Helvetica,sans-serif;
@@ -111,11 +115,34 @@ nav button{
     border-color:#666;
 }
 
-.product img{
+.product-image{
+    cursor:pointer;
+    position:relative;
+}
+
+.product-image img{
     width:100%;
     height:270px;
     object-fit:cover;
+    display:block;
     background:#222;
+}
+
+.view-text{
+    position:absolute;
+    bottom:12px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(0,0,0,.75);
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+    opacity:0;
+    transition:.2s;
+}
+
+.product-image:hover .view-text{
+    opacity:1;
 }
 
 .product-info{
@@ -191,6 +218,84 @@ nav button{
     font-weight:bold;
 }
 
+/* IMAGE GALLERY */
+
+.gallery{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:999;
+    background:rgba(0,0,0,.95);
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+}
+
+.gallery.active{
+    display:flex;
+}
+
+.gallery-content{
+    width:min(900px,95vw);
+    text-align:center;
+    position:relative;
+}
+
+.gallery-image{
+    max-width:100%;
+    max-height:75vh;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+.close-gallery{
+    position:absolute;
+    top:-45px;
+    right:0;
+    background:#fff;
+    color:#000;
+    border:0;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.gallery-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:0;
+    background:#fff;
+    color:#000;
+    font-size:30px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.prev{
+    left:-70px;
+}
+
+.next{
+    right:-70px;
+}
+
+.gallery-title{
+    margin-top:15px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.gallery-counter{
+    color:#aaa;
+    margin-top:7px;
+}
+
 footer{
     padding:30px;
     text-align:center;
@@ -198,11 +303,51 @@ footer{
     border-top:1px solid #222;
 }
 
-@media(max-width:600px){
-    header{padding:15px 4%}
-    .logo{font-size:20px}
-    nav button{font-size:14px;margin-left:8px}
-    .hero{min-height:65vh}
+@media(max-width:700px){
+
+    header{
+        padding:15px 4%;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    nav button{
+        font-size:14px;
+        margin-left:8px;
+    }
+
+    .hero{
+        min-height:65vh;
+    }
+
+    .gallery{
+        padding:15px;
+    }
+
+    .gallery-image{
+        max-height:65vh;
+    }
+
+    .prev{
+        left:5px;
+    }
+
+    .next{
+        right:5px;
+    }
+
+    .gallery-arrow{
+        width:42px;
+        height:42px;
+        font-size:23px;
+    }
+
+    .close-gallery{
+        top:-50px;
+        right:5px;
+    }
 }
 </style>
 </head>
@@ -210,73 +355,205 @@ footer{
 <body>
 
 <header>
+
     <div class="logo">GEARVAULT</div>
 
     <nav>
-        <button onclick="showShop()">SHOP</button>
+
+        <button onclick="showShop()">
+            SHOP
+        </button>
+
         <button onclick="showCart()" class="cart-btn">
             🛒 CART <span id="cartCount">0</span>
         </button>
+
     </nav>
+
 </header>
+
 
 <main>
 
 <section class="hero" id="home">
+
     <div>
+
         <h1>GEARVAULT</h1>
-        <p>Premium Automotive Posters</p>
-        <a href="#shop" class="shop-btn" onclick="showShop()">SHOP NOW</a>
+
+        <p>
+            Premium Automotive Posters
+        </p>
+
+        <a href="#shop"
+           class="shop-btn"
+           onclick="showShop()">
+
+            SHOP NOW
+
+        </a>
+
     </div>
+
 </section>
 
+
 <section class="section" id="shop">
+
     <h2>CAR POSTERS</h2>
 
     <div class="products">
 
+
+        <!-- BMW M4 -->
+
         <div class="product">
-            <img src="https://github.com/wolfr4h6900-sketch/gearvault-store/blob/main/Screenshot%202026-09-22%20225127.png?raw=true">
+
+            <div class="product-image"
+                 onclick="openGallery('BMW M4')">
+
+                <img src="https://github.com/wolfr4h6900-sketch/gearvault-store/blob/main/Screenshot%202026-09-22%20225127.png?raw=true">
+
+                <div class="view-text">
+                    VIEW PHOTOS
+                </div>
+
+            </div>
+
             <div class="product-info">
+
                 <h3>BMW M4</h3>
-                <div class="price">₹300</div>
-                <button class="add" onclick="addToCart('BMW M4',300)">ADD TO CART</button>
+
+                <div class="price">
+                    ₹300
+                </div>
+
+                <button class="add"
+                        onclick="addToCart('BMW M4',300)">
+
+                    ADD TO CART
+
+                </button>
+
             </div>
+
         </div>
 
+
+        <!-- SUPERCAR -->
+
         <div class="product">
-            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=700&q=80">
+
+            <div class="product-image"
+                 onclick="openGallery('Supercar Edition')">
+
+                <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=700&q=80">
+
+                <div class="view-text">
+                    VIEW PHOTOS
+                </div>
+
+            </div>
+
             <div class="product-info">
+
                 <h3>Supercar Edition</h3>
-                <div class="price">₹300</div>
-                <button class="add" onclick="addToCart('Supercar Edition',300)">ADD TO CART</button>
+
+                <div class="price">
+                    ₹300
+                </div>
+
+                <button class="add"
+                        onclick="addToCart('Supercar Edition',300)">
+
+                    ADD TO CART
+
+                </button>
+
             </div>
+
         </div>
 
+
+        <!-- JDM -->
+
         <div class="product">
-            <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=700&q=80">
+
+            <div class="product-image"
+                 onclick="openGallery('JDM Collection')">
+
+                <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=700&q=80">
+
+                <div class="view-text">
+                    VIEW PHOTOS
+                </div>
+
+            </div>
+
             <div class="product-info">
+
                 <h3>JDM Collection</h3>
-                <div class="price">₹350</div>
-                <button class="add" onclick="addToCart('JDM Collection',350)">ADD TO CART</button>
+
+                <div class="price">
+                    ₹350
+                </div>
+
+                <button class="add"
+                        onclick="addToCart('JDM Collection',350)">
+
+                    ADD TO CART
+
+                </button>
+
             </div>
+
         </div>
 
+
+        <!-- MERCEDES -->
+
         <div class="product">
-            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80">
-            <div class="product-info">
-                <h3>Mercedes Edition</h3>
-                <div class="price">₹400</div>
-                <button class="add" onclick="addToCart('Mercedes Edition',400)">ADD TO CART</button>
+
+            <div class="product-image"
+                 onclick="openGallery('Mercedes Edition')">
+
+                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80">
+
+                <div class="view-text">
+                    VIEW PHOTOS
+                </div>
+
             </div>
+
+            <div class="product-info">
+
+                <h3>Mercedes Edition</h3>
+
+                <div class="price">
+                    ₹400
+                </div>
+
+                <button class="add"
+                        onclick="addToCart('Mercedes Edition',400)">
+
+                    ADD TO CART
+
+                </button>
+
+            </div>
+
         </div>
 
     </div>
+
 </section>
+
 
 <section class="section" id="cart">
 
-    <h2>YOUR CART 🛒</h2>
+    <h2>
+        YOUR CART 🛒
+    </h2>
 
     <div id="cartItems"></div>
 
@@ -288,77 +565,168 @@ footer{
        class="whatsapp"
        href="#"
        target="_blank">
+
        ORDER ON WHATSAPP
+
     </a>
 
 </section>
 
 </main>
 
+
+<!-- IMAGE GALLERY -->
+
+<div class="gallery" id="gallery">
+
+    <div class="gallery-content">
+
+        <button class="close-gallery"
+                onclick="closeGallery()">
+
+            ×
+
+        </button>
+
+        <button class="gallery-arrow prev"
+                onclick="previousImage()">
+
+            ‹
+
+        </button>
+
+        <img id="galleryImage"
+             class="gallery-image"
+             src="">
+
+        <button class="gallery-arrow next"
+                onclick="nextImage()">
+
+            ›
+
+        </button>
+
+        <div id="galleryTitle"
+             class="gallery-title">
+        </div>
+
+        <div id="galleryCounter"
+             class="gallery-counter">
+        </div>
+
+    </div>
+
+</div>
+
+
 <footer>
+
     © 2026 GEARVAULT — Automotive Culture
+
 </footer>
+
 
 <script>
 
-let cart = JSON.parse(localStorage.getItem("gearvaultCart")) || [];
+/* =========================
+   CART
+========================= */
+
+let cart =
+JSON.parse(localStorage.getItem("gearvaultCart")) || [];
+
 
 function saveCart(){
-    localStorage.setItem("gearvaultCart",JSON.stringify(cart));
+
+    localStorage.setItem(
+        "gearvaultCart",
+        JSON.stringify(cart)
+    );
+
 }
+
 
 function addToCart(name,price){
 
-    let existing = cart.find(item => item.name === name);
+    let existing =
+    cart.find(item => item.name === name);
 
     if(existing){
+
         existing.qty++;
+
     }else{
+
         cart.push({
             name:name,
             price:price,
             qty:1
         });
+
     }
 
     saveCart();
+
     updateCartCount();
 
     alert(name + " added to cart!");
+
 }
+
 
 function updateCartCount(){
 
-    let count = cart.reduce((total,item)=>total+item.qty,0);
+    let count =
+    cart.reduce(
+        (total,item)=>total+item.qty,
+        0
+    );
 
-    document.getElementById("cartCount").innerText=count;
+    document.getElementById(
+        "cartCount"
+    ).innerText=count;
+
 }
+
 
 function showShop(){
 
-    document.getElementById("shop").style.display="block";
-    document.getElementById("cart").style.display="none";
+    document.getElementById("shop")
+    .style.display="block";
 
-    document.getElementById("shop").scrollIntoView({
+    document.getElementById("cart")
+    .style.display="none";
+
+    document.getElementById("shop")
+    .scrollIntoView({
         behavior:"smooth"
     });
+
 }
+
 
 function showCart(){
 
-    document.getElementById("shop").style.display="none";
-    document.getElementById("cart").style.display="block";
+    document.getElementById("shop")
+    .style.display="none";
+
+    document.getElementById("cart")
+    .style.display="block";
 
     renderCart();
 
-    document.getElementById("cart").scrollIntoView({
+    document.getElementById("cart")
+    .scrollIntoView({
         behavior:"smooth"
     });
+
 }
+
 
 function renderCart(){
 
-    let container=document.getElementById("cartItems");
+    let container =
+    document.getElementById("cartItems");
 
     container.innerHTML="";
 
@@ -366,7 +734,7 @@ function renderCart(){
 
     if(cart.length===0){
 
-        container.innerHTML=
+        container.innerHTML =
         "<p style='text-align:center;color:#888;padding:40px'>Your cart is empty.</p>";
 
     }
@@ -380,24 +748,39 @@ function renderCart(){
         <div class="cart-item">
 
             <div>
-                <strong>${item.name}</strong>
+
+                <strong>
+                    ${item.name}
+                </strong>
+
                 <br>
+
                 ₹${item.price} × ${item.qty}
+
             </div>
 
             <div class="qty">
 
-                <button onclick="changeQty(${index},-1)">−</button>
+                <button
+                    onclick="changeQty(${index},-1)">
+                    −
+                </button>
 
                 ${item.qty}
 
-                <button onclick="changeQty(${index},1)">+</button>
+                <button
+                    onclick="changeQty(${index},1)">
+                    +
+                </button>
 
             </div>
 
-            <button class="remove"
-                    onclick="removeItem(${index})">
-                    REMOVE
+            <button
+                class="remove"
+                onclick="removeItem(${index})">
+
+                REMOVE
+
             </button>
 
         </div>
@@ -406,39 +789,51 @@ function renderCart(){
 
     });
 
-    document.getElementById("cartTotal").innerText=total;
+    document.getElementById(
+        "cartTotal"
+    ).innerText=total;
 
     createWhatsAppLink();
 
 }
+
 
 function changeQty(index,amount){
 
     cart[index].qty += amount;
 
     if(cart[index].qty <= 0){
+
         cart.splice(index,1);
+
     }
 
     saveCart();
+
     updateCartCount();
+
     renderCart();
 
 }
+
 
 function removeItem(index){
 
     cart.splice(index,1);
 
     saveCart();
+
     updateCartCount();
+
     renderCart();
 
 }
 
+
 function createWhatsAppLink(){
 
-    let message="Hello GEARVAULT!%0A%0AI want to order:%0A";
+    let message =
+    "Hello GEARVAULT!%0A%0AI want to order:%0A";
 
     cart.forEach(item=>{
 
@@ -452,24 +847,194 @@ function createWhatsAppLink(){
 
     });
 
-    let total=cart.reduce(
-        (sum,item)=>sum+(item.price*item.qty),0
+    let total =
+    cart.reduce(
+        (sum,item)=>
+        sum+(item.price*item.qty),
+        0
     );
 
-    message += "%0ATotal: ₹"+total;
-
-    /*
-       CHANGE THIS NUMBER TO YOUR WHATSAPP NUMBER.
-       Use country code, without +.
-       Example India: 919876543210
-    */
+    message +=
+    "%0ATotal: ₹"+total;
 
     let phone="916207273731";
 
-    document.getElementById("whatsappOrder").href=
-        "https://wa.me/"+phone+"?text="+message;
+    document.getElementById(
+        "whatsappOrder"
+    ).href =
+    "https://wa.me/"+phone+
+    "?text="+message;
 
 }
+
+
+/* =========================
+   PRODUCT IMAGE GALLERY
+========================= */
+
+
+/*
+   YAHAN HAR PRODUCT KI MULTIPLE
+   IMAGES SET HOTI HAIN.
+*/
+
+const productImages = {
+
+    "BMW M4":[
+
+        "https://github.com/wolfr4h6900-sketch/gearvault-store/blob/main/Screenshot%202026-09-22%20225127.png?raw=true",
+
+        "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80",
+
+        "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&w=1000&q=80"
+
+    ],
+
+    "Supercar Edition":[
+
+        "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1000&q=80",
+
+        "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80"
+
+    ],
+
+    "JDM Collection":[
+
+        "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=80",
+
+        "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=80"
+
+    ],
+
+    "Mercedes Edition":[
+
+        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80",
+
+        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80"
+
+    ]
+
+};
+
+
+let currentProduct = "";
+
+let currentImage = 0;
+
+
+function openGallery(product){
+
+    currentProduct = product;
+
+    currentImage = 0;
+
+    document.getElementById(
+        "gallery"
+    ).classList.add("active");
+
+    showGalleryImage();
+
+}
+
+
+function closeGallery(){
+
+    document.getElementById(
+        "gallery"
+    ).classList.remove("active");
+
+}
+
+
+function showGalleryImage(){
+
+    let images =
+    productImages[currentProduct];
+
+    document.getElementById(
+        "galleryImage"
+    ).src =
+    images[currentImage];
+
+    document.getElementById(
+        "galleryTitle"
+    ).innerText =
+    currentProduct;
+
+    document.getElementById(
+        "galleryCounter"
+    ).innerText =
+    (currentImage+1) +
+    " / " +
+    images.length;
+
+}
+
+
+function nextImage(){
+
+    let images =
+    productImages[currentProduct];
+
+    currentImage++;
+
+    if(currentImage >= images.length){
+
+        currentImage=0;
+
+    }
+
+    showGalleryImage();
+
+}
+
+
+function previousImage(){
+
+    let images =
+    productImages[currentProduct];
+
+    currentImage--;
+
+    if(currentImage < 0){
+
+        currentImage =
+        images.length-1;
+
+    }
+
+    showGalleryImage();
+
+}
+
+
+/* ESC KEY CLOSE */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeGallery();
+
+        }
+
+        if(event.key === "ArrowRight"){
+
+            nextImage();
+
+        }
+
+        if(event.key === "ArrowLeft"){
+
+            previousImage();
+
+        }
+
+    }
+);
+
 
 updateCartCount();
 
