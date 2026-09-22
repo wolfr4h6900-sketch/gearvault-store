@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEARVAULT | Car Posters</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0b0b0b;
+    color:#fff;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#111;
+    border-bottom:1px solid #292929;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+nav button{
+    background:none;
+    border:0;
+    color:#fff;
+    cursor:pointer;
+    font-size:16px;
+    margin-left:20px;
+}
+
+.cart-btn{
+    background:#fff;
+    color:#000;
+    padding:10px 17px;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+.hero{
+    min-height:75vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:50px 20px;
+    background:
+    radial-gradient(circle at center,#303030 0,#111 35%,#070707 75%);
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,90px);
+    letter-spacing:8px;
+    font-weight:900;
+}
+
+.hero p{
+    color:#aaa;
+    font-size:18px;
+    margin:18px 0 30px;
+}
+
+.shop-btn{
+    display:inline-block;
+    background:#fff;
+    color:#000;
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:7px;
+    font-weight:800;
+}
+
+.section{
+    padding:70px 6%;
+}
+
+.section h2{
+    text-align:center;
+    font-size:35px;
+    margin-bottom:40px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.product{
+    background:#151515;
+    border:1px solid #292929;
+    border-radius:12px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.product:hover{
+    transform:translateY(-5px);
+    border-color:#666;
+}
+
+.product img{
+    width:100%;
+    height:270px;
+    object-fit:cover;
+    background:#222;
+}
+
+.product-info{
+    padding:18px;
+}
+
+.product h3{
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.price{
+    color:#bbb;
+    margin-bottom:15px;
+}
+
+.add{
+    width:100%;
+    padding:12px;
+    border:0;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#fff;
+    color:#000;
+}
+
+#cart{
+    display:none;
+    min-height:80vh;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:18px 0;
+    border-bottom:1px solid #292929;
+}
+
+.qty button{
+    padding:6px 10px;
+    margin:0 4px;
+    cursor:pointer;
+}
+
+.remove{
+    background:#333;
+    color:#fff;
+    border:0;
+    padding:8px 12px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.total{
+    text-align:right;
+    font-size:25px;
+    font-weight:bold;
+    margin-top:30px;
+}
+
+.whatsapp{
+    display:block;
+    margin:25px 0 0 auto;
+    width:max-content;
+    background:#fff;
+    color:#000;
+    padding:14px 22px;
+    text-decoration:none;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+footer{
+    padding:30px;
+    text-align:center;
+    color:#777;
+    border-top:1px solid #222;
+}
+
+@media(max-width:600px){
+    header{padding:15px 4%}
+    .logo{font-size:20px}
+    nav button{font-size:14px;margin-left:8px}
+    .hero{min-height:65vh}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">GEARVAULT</div>
+
+    <nav>
+        <button onclick="showShop()">SHOP</button>
+        <button onclick="showCart()" class="cart-btn">
+            🛒 CART <span id="cartCount">0</span>
+        </button>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+    <div>
+        <h1>GEARVAULT</h1>
+        <p>Premium Automotive Posters</p>
+        <a href="#shop" class="shop-btn" onclick="showShop()">SHOP NOW</a>
+    </div>
+</section>
+
+<section class="section" id="shop">
+    <h2>CAR POSTERS</h2>
+
+    <div class="products">
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>BMW M4</h3>
+                <div class="price">₹300</div>
+                <button class="add" onclick="addToCart('BMW M4',300)">ADD TO CART</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>Supercar Edition</h3>
+                <div class="price">₹300</div>
+                <button class="add" onclick="addToCart('Supercar Edition',300)">ADD TO CART</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>JDM Collection</h3>
+                <div class="price">₹350</div>
+                <button class="add" onclick="addToCart('JDM Collection',350)">ADD TO CART</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>Mercedes Edition</h3>
+                <div class="price">₹400</div>
+                <button class="add" onclick="addToCart('Mercedes Edition',400)">ADD TO CART</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="cart">
+
+    <h2>YOUR CART 🛒</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="total">
+        Total: ₹<span id="cartTotal">0</span>
+    </div>
+
+    <a id="whatsappOrder"
+       class="whatsapp"
+       href="#"
+       target="_blank">
+       ORDER ON WHATSAPP
+    </a>
+
+</section>
+
+</main>
+
+<footer>
+    © 2026 GEARVAULT — Automotive Culture
+</footer>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("gearvaultCart")) || [];
+
+function saveCart(){
+    localStorage.setItem("gearvaultCart",JSON.stringify(cart));
+}
+
+function addToCart(name,price){
+
+    let existing = cart.find(item => item.name === name);
+
+    if(existing){
+        existing.qty++;
+    }else{
+        cart.push({
+            name:name,
+            price:price,
+            qty:1
+        });
+    }
+
+    saveCart();
+    updateCartCount();
+
+    alert(name + " added to cart!");
+}
+
+function updateCartCount(){
+
+    let count = cart.reduce((total,item)=>total+item.qty,0);
+
+    document.getElementById("cartCount").innerText=count;
+}
+
+function showShop(){
+
+    document.getElementById("shop").style.display="block";
+    document.getElementById("cart").style.display="none";
+
+    document.getElementById("shop").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+function showCart(){
+
+    document.getElementById("shop").style.display="none";
+    document.getElementById("cart").style.display="block";
+
+    renderCart();
+
+    document.getElementById("cart").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+function renderCart(){
+
+    let container=document.getElementById("cartItems");
+
+    container.innerHTML="";
+
+    let total=0;
+
+    if(cart.length===0){
+
+        container.innerHTML=
+        "<p style='text-align:center;color:#888;padding:40px'>Your cart is empty.</p>";
+
+    }
+
+    cart.forEach((item,index)=>{
+
+        total += item.price * item.qty;
+
+        container.innerHTML += `
+
+        <div class="cart-item">
+
+            <div>
+                <strong>${item.name}</strong>
+                <br>
+                ₹${item.price} × ${item.qty}
+            </div>
+
+            <div class="qty">
+
+                <button onclick="changeQty(${index},-1)">−</button>
+
+                ${item.qty}
+
+                <button onclick="changeQty(${index},1)">+</button>
+
+            </div>
+
+            <button class="remove"
+                    onclick="removeItem(${index})">
+                    REMOVE
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById("cartTotal").innerText=total;
+
+    createWhatsAppLink();
+
+}
+
+function changeQty(index,amount){
+
+    cart[index].qty += amount;
+
+    if(cart[index].qty <= 0){
+        cart.splice(index,1);
+    }
+
+    saveCart();
+    updateCartCount();
+    renderCart();
+
+}
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    saveCart();
+    updateCartCount();
+    renderCart();
+
+}
+
+function createWhatsAppLink(){
+
+    let message="Hello GEARVAULT!%0A%0AI want to order:%0A";
+
+    cart.forEach(item=>{
+
+        message +=
+        item.name +
+        " × " +
+        item.qty +
+        " = ₹" +
+        (item.price*item.qty) +
+        "%0A";
+
+    });
+
+    let total=cart.reduce(
+        (sum,item)=>sum+(item.price*item.qty),0
+    );
+
+    message += "%0ATotal: ₹"+total;
+
+    /*
+       CHANGE THIS NUMBER TO YOUR WHATSAPP NUMBER.
+       Use country code, without +.
+       Example India: 919876543210
+    */
+
+    let phone="916207273731";
+
+    document.getElementById("whatsappOrder").href=
+        "https://wa.me/"+phone+"?text="+message;
+
+}
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>
